@@ -20,7 +20,9 @@
               "apps/sentry-app/src/favicon.ico",
               "apps/sentry-app/src/assets"
             ],
-            "styles": ["apps/sentry-app/src/styles.scss"],
+            "styles": [
+              "apps/sentry-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -33,7 +35,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -81,7 +83,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/sentry-app"],
+          "outputs": [
+            "coverage/apps/sentry-app"
+          ],
           "options": {
             "jestConfig": "apps/sentry-app/jest.config.js",
             "passWithNoTests": true
@@ -110,7 +114,52 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/sentry-app-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/sentry-app-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "sentry-backend": {
+      "projectType": "application",
+      "root": "apps/sentry-backend",
+      "sourceRoot": "apps/sentry-backend/src",
+      "architect": {
+        "run": {
+          "builder": "@nxrocks/nx-spring-boot:run",
+          "options": {
+            "root": "apps/sentry-backend"
+          }
+        },
+        "serve": {
+          "builder": "@nxrocks/nx-spring-boot:serve",
+          "options": {
+            "root": "apps/sentry-backend"
+          }
+        },
+        "buildJar": {
+          "builder": "@nxrocks/nx-spring-boot:buildJar",
+          "options": {
+            "root": "apps/sentry-backend"
+          }
+        },
+        "buildWar": {
+          "builder": "@nxrocks/nx-spring-boot:buildWar",
+          "options": {
+            "root": "apps/sentry-backend"
+          }
+        },
+        "buildImage": {
+          "builder": "@nxrocks/nx-spring-boot:buildImage",
+          "options": {
+            "root": "apps/sentry-backend"
+          }
+        },
+        "buildInfo": {
+          "builder": "@nxrocks/nx-spring-boot:buildInfo",
+          "options": {
+            "root": "apps/sentry-backend"
           }
         }
       }
